@@ -66,7 +66,8 @@ const List = () => {
             </header>
             <p className={styles.description}>Interesting thigns I want to check out.</p>
             <section className={styles.columns}>
-                {columns.map(column => <Column key={column.id} title={column.title} icon={column.icon} cards={column.cards} action={addCard} />)};
+                {columns.map(column => <Column key={column.id} {...column} action={addCard} />)};
+                {/* {columns.map(column => <Column key={column.id} title={column.title} icon={column.icon} cards={column.cards} action={addCard} id={column.id} />)} */}
                {/* <Column title={"Books"} icon={"book"}/>
                <Column title={"Movies"} icon={"film"}/>
                <Column title={"Games"} icon={"play"}/> */}
