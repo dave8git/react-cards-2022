@@ -2,6 +2,7 @@ import styles from './ColumnForm.module.scss';
 import Button from '../Button/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import shortid from 'shortid';
 
 const ColumnForm = props => {
     const [title, setTitle] = useState('');
@@ -9,7 +10,7 @@ const ColumnForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch({ type: 'ADD_COLUMN', newColumn: {title: title, icon: icon }});
+        dispatch({ type: 'ADD_COLUMN', newColumn: {id: shortid(), title: title, icon: icon }});
         setTitle('');
         setIcon('');
 
