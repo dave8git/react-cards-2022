@@ -5,7 +5,7 @@ import { stringsEqual } from '../utils/strContains';
 export const getFilteredCards = ({ cards, searchString }, columnId) => cards.filter(card => card.columnId === columnId && stringsEqual(card.title, searchString));
 
 export const getAllColumns = state => state.columns;
-// export const getFilteredCards = ({ cards, searchString }, columnId) => cards.filter(card => card.columnId === columnId && card.title.toLowerCase().includes(searchString.toLowerCase()));
+
 
 // action creators 
 export const addColumn = payload => ({type: 'ADD_COLUMN', payload: payload});
