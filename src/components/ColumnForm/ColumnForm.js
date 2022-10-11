@@ -1,5 +1,6 @@
 import styles from './ColumnForm.module.scss';
 import Button from '../Button/Button';
+import { addColumn } from '../../redux/store';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
@@ -10,10 +11,13 @@ const ColumnForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch({ type: 'ADD_COLUMN', newColumn: {id: shortid(), title: title, icon: icon }});
-        setTitle('');
-        setIcon('');
-
+        if(title !== '' && icon !== '') {
+            dispatch(addColumn({id: shortid(), title: title, icon: icon})); // wywołanie akcji
+            setTitle('');
+            setIcon('');
+        } else {
+            alert('Proszę uzupełnić wszystkie pola!');
+        }
     }
     
     const dispatch = useDispatch();
