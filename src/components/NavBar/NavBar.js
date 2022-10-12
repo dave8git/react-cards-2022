@@ -8,9 +8,10 @@ const NavBar = props => {
     return (
        <nav className={styles.mainNavStyle}>
         <Container>
+            <div className={styles.mainWrapper}>
             <div>
                 <a href="/" className={styles.iconBlock}>
-                    <i className={styles.iconTasks}></i>
+                    <i class="fa fa-tasks fa-3x" aria-hidden="true" className={styles.iconTasks}></i>
                 </a>
             </div>
             <div>
@@ -20,7 +21,8 @@ const NavBar = props => {
                     <li><a href="/about">About</a></li>
                 </ul>
             </div>
-        
+            </div>
+
         </Container>
        </nav>
     )
