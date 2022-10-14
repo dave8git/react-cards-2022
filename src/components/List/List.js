@@ -2,11 +2,14 @@ import styles from './List.module.scss';
 import Column from '../Column/Column';
 import ColumnForm from '../ColumnForm/ColumnForm';
 import { useEffect} from 'react';
+import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
-import { getAllColumns } from '../../redux/store';
+import { getAllColumns, getListById, getColumnsByList } from '../../redux/store';
+import Lists from '../Lists/Lists';
 //import shortid from 'shortid';
 
-const List = () => {
+const List = props => {
+    const {listId} = useParams();
     // const [columns, setColumns] = useState([
     //     {
     //         id: 1,
@@ -37,7 +40,7 @@ const List = () => {
     //     }
     // ]);
 
-    const columns = useSelector(getAllColumns);
+    const columns = useSelector((state) => getColumnsByList(state, listId));
 
     // useEffect(() => {
     //     setTimeout(() => {
@@ -62,7 +65,11 @@ const List = () => {
     
     // };
       
-  
+    const listData = useSelector((state) => getListById(state));
+
+    console.log(listData);
+
+
     return (
         <div>
             <header className={styles.header}>
