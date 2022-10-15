@@ -1,20 +1,20 @@
-import styles from './ColumnForm.module.scss';
+import styles from './ListForm.module.scss';
 import Button from '../Button/Button';
-import { addColumn } from '../../redux/store';
+import { addList } from '../../redux/store';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
 
-const ColumnForm = props => {
+const ListForm = props => {
     const [title, setTitle] = useState('');
-    const [icon, setIcon] = useState('');
+    const [description, setDescription] = useState('');
 
     const handleSubmit = e => {
         e.preventDefault();
-        if(title !== '' && icon !== '') {
-            dispatch(addColumn({id: shortid(), title: title, icon: icon, listId: props.listId})); // wywołanie akcji
+        if(title !== '' && description !== '') {
+            dispatch(addList({id: shortid(), title: title, description: description})); // wywołanie akcji
             setTitle('');
-            setIcon('');
+            setDescription('');
         } else {
             alert('Proszę uzupełnić wszystkie pola!');
         }
@@ -23,12 +23,12 @@ const ColumnForm = props => {
     const dispatch = useDispatch();
 
     return (
-        <form className={styles.columnForm} onSubmit={handleSubmit}>
+        <form className={styles.listForm} onSubmit={handleSubmit}>
             Title: <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
-            Icon: <input type="text" value={icon} onChange={e => setIcon(e.target.value)} />
+            Description: <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
             <Button>Add column</Button>
         </form>
     )
 }
 
-export default ColumnForm;
+export default ListForm;

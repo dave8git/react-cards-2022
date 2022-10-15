@@ -14,6 +14,7 @@ const SearchForm = () => {
         e.preventDefault();
         dispatch(updateSearchString(newSearchString)); // skrócona wersja może być newSearchString: newSearchString
         setSearchString('');
+        StaticRange.searchString = '';
     }
 
     return (

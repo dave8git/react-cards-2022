@@ -1,6 +1,8 @@
 import styles from './List.module.scss';
 import Column from '../Column/Column';
 import ColumnForm from '../ColumnForm/ColumnForm';
+import SearchForm from '../SearchForm/SearchForm';
+//import Navigate from 'react-router-dom';
 import { useEffect} from 'react';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
@@ -10,6 +12,8 @@ import Lists from '../Lists/Lists';
 
 const List = props => {
     const {listId} = useParams();
+
+    console.log('listId', listId);
     // const [columns, setColumns] = useState([
     //     {
     //         id: 1,
@@ -42,6 +46,7 @@ const List = props => {
 
     const columns = useSelector((state) => getColumnsByList(state, listId));
 
+    console.log('columns', columns);
     // useEffect(() => {
     //     setTimeout(() => {
     //         setColumns([...columns, {id: 4, title: 'Test column'}]);
@@ -65,10 +70,11 @@ const List = props => {
     
     // };
       
-    const listData = useSelector((state) => getListById(state));
+    const listData = useSelector((state) => getListById(state, listId));
 
-    console.log(listData);
+    console.log('listData', listData);
 
+    //if(!listData) return <Navigate to="/" />
 
     return (
         <div>
@@ -76,6 +82,7 @@ const List = props => {
                 <h2>Things to do<span> soon</span></h2>
             </header>
             <p className={styles.description}>Interesting thigns I want to check out.</p>
+            <SearchForm />
             <section className={styles.columns}>
                 {columns.map(column => <Column key={column.id} {...column} />)};
                 {/* {columns.map(column => <Column key={column.id} title={column.title} icon={column.icon} cards={column.cards} action={addCard} id={column.id} />)} */}
@@ -83,7 +90,7 @@ const List = props => {
                <Column title={"Movies"} icon={"film"}/>
                <Column title={"Games"} icon={"play"}/> */}
             </section>
-            <ColumnForm />
+            <ColumnForm listId={listId}/>
         </div>
     );
 };

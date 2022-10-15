@@ -7,7 +7,6 @@ const Home = props => {
     return (
         <>
          <Hero />
-         <SearchForm />
          <Lists />
         </>
     );
