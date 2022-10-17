@@ -6,7 +6,8 @@ import SearchForm from '../SearchForm/SearchForm';
 import { useEffect} from 'react';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
-import { getAllColumns, getListById, getColumnsByList } from '../../redux/store';
+import { getAllColumns, getListById } from '../../redux/listsRedux';
+import { getColumnsByList } from '../../redux/columnsRedux';
 import Lists from '../Lists/Lists';
 //import shortid from 'shortid';
 
